@@ -8,10 +8,10 @@
 		"date": "2023-03-02"
 	},
 	{
-		"description": "Rent, Sept 2020",
 		"from": "Trinity",
 		"to": "Joint",
 		"amount": 3553,
+		"description": "Rent, Sept 2020",
 		"currency": "USD",
 		"date": "2000-01-01"
 	},
