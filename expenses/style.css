@@ -1,0 +1,47 @@
+h1 {
+    text-align: center;
+}
+
+input,
+button {
+    margin: 8px;
+}
+
+label+input {
+    margin-left: 4px;
+}
+
+input+button,
+button+button {
+    margin-left: 0;
+}
+
+input[type="number"],
+input[list="people"] {
+    width: 64px;
+}
+
+input[list="currency"] {
+    width: 48px;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+summary {
+    font-weight: bold;
+}
+
+.expense-form {
+    padding: 16px;
+    border: dashed 2px;
+}
+
+.expense-table {
+    width: 100%;
+    padding: 16px;
+    border: solid 2px;
+}

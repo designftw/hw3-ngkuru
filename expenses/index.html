@@ -1,24 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Expenses</title>
+	<title>Expense tracker</title>
 	<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div id="app">
-	<!-- Replace hw3-starter below with your repo name (hw3-yourusername) so you can save!  -->
-	<ma-data v-model="expenses" src="https://github.com/designftw/hw3-starter/expenses/data.json"></ma-data>
+	<div id="app">
+		<!-- Replace hw3-starter below with your repo name (hw3-yourusername) so you can save!  -->
+		<ma-data v-model="expenses" src="https://github.com/designftw/hw3-ngkuru/expenses/data.json"></ma-data>
 
-	<!-- App UI here -->
+		<!-- App UI here -->
+		<header>
+			<h1>{{ total_balance > 0 ? "Neo" : "Trinity" }} owes ${{ Math.round(Math.abs(total_balance) * 100) / 100 }}</h1>
+		</header>
 
-	<!-- Delete this line when you write your actual UI -->
-	{{ expenses.length }} expenses loaded.
-</div>
+		<section class="expense-form" @keydown.enter="addExpense()">
+			<p class="flex-center">
+				<input list="people" v-model="temporaryExpense.from">
+				paid
+				<input type="number" v-model="temporaryExpense.amount">
+				on behalf of
+				<input list="people" v-model="temporaryExpense.to">
+				for
+				<input v-model="temporaryExpense.description">
+				<button @click="addExpense()">Add expense</button>
+			</p>
 
-<script src="index.js" type="module"></script>
+			<details>
+				<summary>Advanced:</summary>
 
+				<label for="currency">Currency:</label>
+				<input name="currency" list="currency" onClick="this.select()" v-model="temporaryExpense.currency">
+
+				<label for="date">Date:</label>
+				<input id="expense-date" name="date" type="date" v-model="temporaryExpense.date">
+			</details>
+
+			<datalist id="people">
+				<option value="Neo"></option>
+				<option value="Trinity"></option>
+				<option value="Joint"></option>
+			</datalist>
+
+			<datalist id="currency">
+				<option value="USD"></option>
+				<option value="EUR"></option>
+				<option value="GBP"></option>
+			</datalist>
+		</section>
+
+		<br>
+
+		<table class="expense-table">
+			<thead>
+				<th>Date</th>
+				<th>From</th>
+				<th>To</th>
+				<th>Amount</th>
+				<th>Description</th>
+				<!-- <th>Cleared</th> -->
+				<th></th>
+			</thead>
+
+			<tr v-for="(expense, i) in expenses">
+				<td>{{ expense.date }}</td>
+				<td>{{ expense.from }}</td>
+				<td>{{ expense.to }}</td>
+				<td>{{ expense.amount.toFixed(2) }}</td>
+				<td>{{ expense.description }}</td>
+				<!-- <td>{{ expense.cleared }}</td> -->
+				<td>
+					<button>edit</button>
+					<button @click="deleteExpense(i)">x</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<script src="index.js" type="module"></script>
 </body>
+
 </html>

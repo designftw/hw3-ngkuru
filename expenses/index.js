@@ -1,8 +1,35 @@
 import { createApp } from "https://mavue.mavo.io/mavue.js";
 
+/**
+ * Get today's date, attributed to https://stackoverflow.com/a/15301874/21022255
+ * @returns today's date
+ */
+let getTodaysDate = () => {
+	let date = new Date();
+
+	let year = date.getFullYear();
+	let month = date.getMonth() + 1;
+	let day = date.getDate();
+
+	if (month < 10) month = "0" + month;
+	if (day < 10) day = "0" + day;
+
+	let today = year + "-" + month + "-" + day;
+	return today;
+};
+
 globalThis.app = createApp({
 	data: {
-		expenses: []
+		expenses: [],
+		temporaryExpense: {
+			"from": "",
+			"to": "",
+			"amount": "",
+			"description": "",
+			"currency": "USD",
+			"date": getTodaysDate(),
+			// "cleared": false,
+		},
 	},
 
 	methods: {
@@ -24,20 +51,89 @@ globalThis.app = createApp({
 			};
 
 			return amount * rates[to] / rates[from];
+		},
+
+		addExpense() {
+			if (this.temporaryExpense.from == "") {
+				return;
+			}
+			if (this.temporaryExpense.to == "") {
+				return;
+			}
+			if (this.temporaryExpense.amount == "" || this.temporaryExpense.amount < 0) {
+				return;
+			}
+			if (this.temporaryExpense.from == "") {
+				return;
+			}
+			if (!(["USD", "GBP", "EUR"].includes(this.temporaryExpense.currency))) {
+				return;
+			}
+
+			let usdAmount = this.currencyConvert(this.temporaryExpense.currency, "USD", this.temporaryExpense.amount)
+			let expense = {
+				"from": this.temporaryExpense.from,
+				"to": this.temporaryExpense.to,
+				"amount": usdAmount,
+				"description": this.temporaryExpense.description,
+				"currency": "USD",
+				"date": this.temporaryExpense.date,
+				// "cleared": false,
+			};
+
+			this.expenses.unshift(expense);
+			this.temporaryExpense = {
+				"from": "",
+				"to": "",
+				"amount": "",
+				"description": "",
+				"currency": "USD",
+				"date": getTodaysDate(),
+				// "cleared": false,
+			};
+		},
+
+		deleteExpense(i) {
+			this.expenses.splice(i, 1);
+		},
+
+		saveExpenses() {
+			expenses.sort((a, b) => {
+				if (a.date <= b.date) {
+					return 1;
+				} else {
+					return 0;
+				}
+			});
+
+			expenses.save();
 		}
 	},
 
 	computed: {
-		total_balance () {
+		total_balance() {
 			let total = 0;
 
 			for (let expense of this.expenses) {
-				let trinity_paid = expense.trinity_paid ?? 0;
-				let neo_paid = expense.neo_paid ?? 0;
-				let trinity_paid_for_neo = expense.trinity_paid_for_neo ?? 0;
-				let neo_paid_for_trinity = expense.neo_paid_for_trinity ?? 0;
+				let debt = 0
 
-				total += (trinity_paid - neo_paid)/2 + trinity_paid_for_neo - neo_paid_for_trinity;
+				if (expense.from == "Trinity") {
+					debt += expense.amount / 2;
+				} else if (expense.from == "Neo") {
+					debt -= expense.amount / 2;
+				} else if (expense.from != "Joint") {
+					continue;
+				}
+
+				if (expense.to == "Trinity") {
+					debt -= expense.amount / 2;
+				} else if (expense.to == "Neo") {
+					debt += expense.amount / 2;
+				} else if (expense.to != "Joint") {
+					continue;
+				}
+
+				total += debt
 			}
 
 			return total;
