@@ -1,12 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Fix the Web with CSS!</title>
 </head>
-<body>
 
+<body>
+	<h1>Fix <a href="https://www.theperfumedcourt.com/">theperfumedcourt.com</a> with CSS!</h1>
+
+	<figure>
+		<img src="./images/original.png" width="720">
+		<figcaption>Original website.</figcaption>
+	</figure>
+
+	<figure>
+		<img src="./images/footer.png" width="720">
+		<figcaption>Footer including the "Follow Us" section.</figcaption>
+	</figure>
+
+	<p>
+		The Perfumed Court is an online retail store which sells perfume decants. All changes are below as well as in
+		the relevant sections for convenience.
+	</p>
+
+	<code>
+		.headernavmenu a.actuator {
+			display: none;
+		}
+
+		<br>
+
+		#homepagecolumn3 > div:nth-child(1) {
+			display: none;
+		}
+
+		<br>
+
+		a[title="Log Out of Web Site"] {
+			color: red;
+			font-weight: bold;
+		}
+
+		<br>
+
+		#homepagecolumn3 .productgrid h4 {
+			text-align: center;
+		}
+
+		<br>
+
+		#header .headersearch {
+			float: right;
+		}
+
+		<br>
+
+		#homepagecolumn3 {
+			border-left: 2px solid;
+			padding-left: 8px;
+		}
+
+		<br>
+
+		<code>
+			#homepagecolumn3 .record {
+				border: 2px solid;
+				border-color: gold;
+				padding: 4px;
+			}
+		</code>
+
+		<br>
+
+		#header .headersearch .searchboxform .decoratedblock .blockcontent .forminput {
+			width: 200px;
+		}
+	</code>
+
+	<section>
+		<h2>Fix 1: Efficiency, Simplicity</h2>
+
+		<p>
+			A navigation bar should be free from distractions. In this website, the bar contains two different types of
+			hyperlinks: 1) sections of the website, 2) highlighted perfume categories. The second group is in conflict
+			with the first, and is out of place. Moreover, it is replicated in a very close element under the "BROWSE BY
+			CATEGORY" list. This introduces an efficiency issue, as it prevents an experienced user to directly reach
+			the content they want to see. Their ability to navigate the website is hindered by the hyperlinks to the
+			categories.
+		</p>
+
+		<p>
+			I fix this issue by removing the second type of hyperlinks from the navigation bar. I also hide the "Follow
+			us" section from the body as it is also included in the footer and it does not contribute to the
+			functionality of the website. I believe this is a simplicity improvement.
+		</p>
+
+		<code>
+			.headernavmenu a.actuator {
+				display: none;
+			}
+
+			#homepagecolumn3 > div:nth-child(1) {
+				display: none;
+			}
+		</code>
+
+		<figure>
+			<img src="./images/efficiency.png" width="720">
+			<figcaption>Website after Fix 1.</figcaption>
+		</figure>
+	</section>
+
+	<section>
+		<h2>Fix 2: Safety</h2>
+
+		<p>
+			The site menu on the left includes a "Log Out" link. This should not be included when the user is not logged
+			in, but fixing that is beyond the scope of this exercise. We will focus on a different issue with this link,
+			which is that it is blended in the site menu and is very vulnerable to execution errors. A logged in user
+			can slip and click the link, logging themselves out without even noticing.
+		</p>
+
+		<p>
+			I fix this issue by adding contrast to the "Log Out" link.
+		</p>
+
+		<code>
+			a[title="Log Out of Web Site"] {
+				color: red;
+				font-weight: bold;
+			}
+		</code>
+
+		<figure>
+			<img src="./images/safety.png" width="720">
+			<figcaption>Website after Fix 2.</figcaption>
+		</figure>
+	</section>
+
+	<section>
+		<h2>Fix 3: Alignment</h2>
+
+		<p>
+			The website has some alignment issues, such as the search element floating left instead of right in the top
+			right box, or the "Top Sellers This Week" text being aligned left, which conflicts with the perfumes aligned
+			center. I fix these issues.
+		</p>
+
+		<code>
+			#homepagecolumn3 .productgrid h4 {
+				text-align: center;
+			}
+
+			#header .headersearch {
+				float: right;
+			}
+		</code>
+
+		<figure>
+			<img src="./images/alignment.png" width="720">
+			<figcaption>Website after Fix 3.</figcaption>
+		</figure>
+	</section>
+
+	<section>
+		<h2>Fix 4: Proximity</h2>
+
+		<p>
+			Currently, the "Featured products" section and the "Top Sellers This Week" section look too close together
+			and there is not enough distance between the two sections. This introduces a proximity issue between the two
+			and can lead to the user confusing the contents of the two. I fix this by adding a border between the two
+			and adding some padding.
+		</p>
+
+		<code>
+			#homepagecolumn3 {
+				border-left: 2px solid;
+				padding-left: 8px;
+			}
+		</code>
+
+		<figure>
+			<img src="./images/proximity.png" width="720">
+			<figcaption>Website after Fix 4.</figcaption>
+		</figure>
+	</section>
+
+	<section>
+		<h2>Fix 5: Contrast</h2>
+
+		<p>
+			Even after Fix 4, there is not enough contrast between top sellers and featured products. I fix this by
+			adding borders (gold color with repetition in mind) around top sellers to make them even more distinct.
+		</p>
+
+		<code>
+			#homepagecolumn3 .record {
+				border: 2px solid;
+				border-color: gold;
+				padding: 4px;
+			}
+		</code>
+
+		<figure>
+			<img src="./images/contrast.png" width="720">
+			<figcaption>Website after Fix 5.</figcaption>
+		</figure>
+	</section>
+
+	<section>
+		<h2>Fix 6: Safety</h2>
+
+		<p>
+			In comparison to the names of the perfumes, the search bar is very small. As a user types a perfume name to
+			search, the beginning of the name will likely disappear to the left. This introduces a security and
+			efficiency issue as the system is not tolerant to execution errors such as typos. I fix this by making the
+			search bar longer.
+		</p>
+
+		<code>
+			#header .headersearch .searchboxform .decoratedblock .blockcontent .forminput {
+				width: 200px;
+			}
+		</code>
+
+		<figure>
+			<img src="./images/safety2.png" width="720">
+			<figcaption>Website after Fix 6.</figcaption>
+		</figure>
+	</section>
 </body>
+
 </html>
