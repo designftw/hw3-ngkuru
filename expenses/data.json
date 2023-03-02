@@ -1,21 +1,5 @@
 [
 	{
-		"from": "Neo",
-		"to": "Joint",
-		"amount": 1010.1010101010102,
-		"description": "wow",
-		"currency": "USD",
-		"date": "2022-11-02"
-	},
-	{
-		"from": "Neo",
-		"to": "Trinity",
-		"amount": 100,
-		"description": "hotel",
-		"currency": "USD",
-		"date": "2023-03-02"
-	},
-	{
 		"description": "Rent, Sept 2020",
 		"from": "Trinity",
 		"to": "Joint",
@@ -526,5 +510,21 @@
 		"amount": 305,
 		"currency": "USD",
 		"date": "2000-01-01"
+	},
+	{
+		"from": "Neo",
+		"to": "Joint",
+		"amount": 1010.1010101010102,
+		"description": "wow",
+		"currency": "USD",
+		"date": "2022-11-02"
+	},
+	{
+		"from": "Neo",
+		"to": "Trinity",
+		"amount": 100,
+		"description": "hotel",
+		"currency": "USD",
+		"date": "2023-03-02"
 	}
 ]
