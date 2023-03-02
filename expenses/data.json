@@ -10,6 +10,14 @@
 	{
 		"from": "Trinity",
 		"to": "Joint",
+		"amount": 2283,
+		"description": "Joint credit card Sep 2020",
+		"currency": "USD",
+		"date": "2000-01-01"
+	},
+	{
+		"from": "Trinity",
+		"to": "Joint",
 		"amount": 3553,
 		"description": "Rent, Sept 2020",
 		"currency": "USD",
@@ -20,14 +28,6 @@
 		"from": "Neo",
 		"to": "Joint",
 		"amount": 200,
-		"currency": "USD",
-		"date": "2000-01-01"
-	},
-	{
-		"description": "Joint credit card Sep 2020",
-		"from": "Trinity",
-		"to": "Joint",
-		"amount": 2283,
 		"currency": "USD",
 		"date": "2000-01-01"
 	},
