@@ -28,7 +28,6 @@ globalThis.app = createApp({
 			"description": "",
 			"currency": "USD",
 			"date": getTodaysDate(),
-			// "cleared": false,
 		},
 	},
 
@@ -89,7 +88,6 @@ globalThis.app = createApp({
 				"description": "",
 				"currency": "USD",
 				"date": getTodaysDate(),
-				// "cleared": false,
 			};
 		},
 
@@ -98,15 +96,29 @@ globalThis.app = createApp({
 		},
 
 		saveExpenses() {
-			expenses.sort((a, b) => {
-				if (a.date <= b.date) {
+			this.expenses.sort((a, b) => {
+				if (a.date < b.date) {
 					return 1;
+				} else if (a.date > b.date) {
+					return -1;
 				} else {
 					return 0;
 				}
 			});
 
-			expenses.save();
+			this.expenses.save();
+		},
+
+		editExpense(i) {
+			this.temporaryExpense = {
+				"from": this.expenses[i].from,
+				"to": this.expenses[i].to,
+				"amount": this.expenses[i].amount,
+				"description": this.expenses[i].description,
+				"currency": this.expenses[i].currency,
+				"date": this.expenses[i].date,
+			};
+			this.deleteExpense(i);
 		}
 	},
 

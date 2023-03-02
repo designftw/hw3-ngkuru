@@ -17,7 +17,14 @@
 		<!-- App UI here -->
 		<header>
 			<h1>{{ total_balance > 0 ? "Neo" : "Trinity" }} owes ${{ Math.round(Math.abs(total_balance) * 100) / 100 }}</h1>
+		
+			<div class="flex-center">
+				<button @click="expenses.login()">{{ expenses.user ? "Logged in as " + expenses.user.username : "Log in" }}</button>
+				<button @click="saveExpenses()">Save expenses</button>
+			</div>
 		</header>
+		
+		<br>
 
 		<section class="expense-form" @keydown.enter="addExpense()">
 			<p class="flex-center">
@@ -63,7 +70,6 @@
 				<th>To</th>
 				<th>Amount</th>
 				<th>Description</th>
-				<!-- <th>Cleared</th> -->
 				<th></th>
 			</thead>
 
@@ -73,9 +79,8 @@
 				<td>{{ expense.to }}</td>
 				<td>{{ expense.amount.toFixed(2) }}</td>
 				<td>{{ expense.description }}</td>
-				<!-- <td>{{ expense.cleared }}</td> -->
 				<td>
-					<button>edit</button>
+					<button @click="editExpense(i)">edit</button>
 					<button @click="deleteExpense(i)">x</button>
 				</td>
 			</tr>
