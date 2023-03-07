@@ -1,17 +1,9 @@
 [
 	{
-		"from": "Neo9",
-		"to": "Trinity2",
-		"amount": 4,
-		"description": "asdasd",
-		"currency": "USD",
-		"date": "2023-03-06"
-	},
-	{
 		"from": "Neo",
 		"to": "Trinity",
 		"amount": 100,
-		"description": "hotel",
+		"description": "",
 		"currency": "USD",
 		"date": "2023-03-02"
 	},
